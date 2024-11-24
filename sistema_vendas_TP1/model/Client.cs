@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sistema_vendas_TP1.model
+{
+    internal class Client
+    {
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Cpf { get; set; }
+
+        public Client( string name, int age, string cpf)
+        {
+            Name = name;
+            Age = age;
+            Cpf = cpf;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Nome: {Name}");
+            sb.AppendLine($"Idade: {Age}");
+            sb.AppendLine($"CPF: {Cpf}");
+
+            return sb.ToString();
+        }
+    }
+}
