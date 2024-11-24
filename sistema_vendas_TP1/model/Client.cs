@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MeuProjeto.Utils;
 
 namespace sistema_vendas_TP1.model
 {
@@ -15,6 +16,7 @@ namespace sistema_vendas_TP1.model
 
         public Client( string name, int age, string cpf)
         {
+            Code = HashHelper.GenerateHash(cpf);
             Name = name;
             Age = age;
             Cpf = cpf;
@@ -23,6 +25,7 @@ namespace sistema_vendas_TP1.model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Código: {Code}");
             sb.AppendLine($"Nome: {Name}");
             sb.AppendLine($"Idade: {Age}");
             sb.AppendLine($"CPF: {Cpf}");

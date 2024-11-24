@@ -29,5 +29,25 @@ namespace sistema_vendas_TP1.Repository
             return sb.ToString();
         }
 
+        public Client getClientByCode(string code)
+        {
+            Client? client = _clients.Find(c => c.Code == code);
+            if (client == null)
+            {
+                throw new Exception($"Cliente não encontrado com o código {code}");
+            }
+            return client;
+        }
+
+        public void deleteClientByCode(string code)
+        {
+            Client? client = getClientByCode(code);
+            if (client == null)
+            {
+                throw new Exception($"Cliente não encontrado com o código {code}");
+            }
+            _clients.Remove(client);
+        }
+
     }
 }
