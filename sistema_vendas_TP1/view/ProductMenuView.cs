@@ -21,6 +21,31 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine("4. Deletar Produto por Código");
         Console.WriteLine("5. Voltar ao Menu Principal");
         Console.Write("Selecione uma opção: ");
+
+        string? choice = Console.ReadLine();
+        switch (choice)
+        {
+          case "1":
+
+            break;
+          case "2":
+
+            break;
+          case "3":
+
+            break;
+          case "4":
+
+            break;
+          case "5":
+            running = false;
+            Console.WriteLine("Retornando ao Menu Principal...");
+            Console.WriteLine();
+            break;
+          default:
+            Console.WriteLine("Opção inválida! Por favor, tente novamente.");
+            break;
+        }
       }
     }
   }
