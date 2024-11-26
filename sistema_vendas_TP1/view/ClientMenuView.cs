@@ -1,32 +1,29 @@
-﻿using System;
-using sistema_vendas_TP1.view;
+using System;
 
-namespace SalesSystem
+namespace sistema_vendas_TP1.view
 {
-    class Program
+    public static class ClientMenuView
     {
-        static void Main(string[] args)
+        public static void Show()
         {
-            Console.WriteLine("Sistema de Vendas");
-            Console.WriteLine("#####################################################");
-            Console.WriteLine();
-
             bool running = true;
             while (running)
             {
-                Console.WriteLine("Menu Principal");
                 Console.WriteLine();
-                Console.WriteLine("1. Gerenciar Clientes");
-                Console.WriteLine("2. Gerenciar Produtos");
-                Console.WriteLine("3. Gerenciar Vendas");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("Menu de Clientes");
+                Console.WriteLine();
+                Console.WriteLine("1. Cadastrar Cliente");
+                Console.WriteLine("2. Buscar Cliente por Código");
+                Console.WriteLine("3. Listar Clientes");
+                Console.WriteLine("4. Deletar Cliente por Código");
+                Console.WriteLine("5. Voltar ao Menu Principal");
                 Console.Write("Selecione uma opção: ");
 
                 string? choice = Console.ReadLine();
                 switch (choice)
                 {
                     case "1":
-                        ClientMenuView.Show();
+
                         break;
                     case "2":
 
@@ -35,15 +32,18 @@ namespace SalesSystem
 
                         break;
                     case "4":
+
+                        break;
+                    case "5":
                         running = false;
+                        Console.WriteLine("Retornando ao Menu Principal...");
+                        Console.WriteLine();
                         break;
                     default:
                         Console.WriteLine("Opção inválida! Por favor, tente novamente.");
                         break;
                 }
             }
-
-            Console.WriteLine("Obrigado por usar o Sistema de Vendas!");
         }
     }
 }

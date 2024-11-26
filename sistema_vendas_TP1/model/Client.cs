@@ -14,7 +14,7 @@ namespace sistema_vendas_TP1.model
         public int Age { get; set; }
         public string Cpf { get; set; }
 
-        public Client( string name, int age, string cpf)
+        public Client(string name, int age, string cpf)
         {
             Code = Guid.NewGuid().ToString();
             Name = name;
