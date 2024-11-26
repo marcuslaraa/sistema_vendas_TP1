@@ -32,7 +32,7 @@ namespace SalesSystem
             ProductMenuView.show();
             break;
           case "3":
-
+            SaleMenuView.show();
             break;
           case "4":
             running = false;
@@ -43,7 +43,7 @@ namespace SalesSystem
         }
       }
 
-      Console.WriteLine("Obrigado por usar o Sistema de Vendas!");
+      Console.WriteLine("Obrigado por usar o nosso Sistema de Vendas!");
     }
   }
 }
