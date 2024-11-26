@@ -16,7 +16,7 @@ namespace sistema_vendas_TP1.model
 
         public Client( string name, int age, string cpf)
         {
-            Code = HashHelper.GenerateHash(cpf);
+            Code = Guid.NewGuid().ToString();
             Name = name;
             Age = age;
             Cpf = cpf;
