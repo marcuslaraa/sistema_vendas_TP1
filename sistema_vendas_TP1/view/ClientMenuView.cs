@@ -9,7 +9,7 @@ namespace sistema_vendas_TP1.view
       bool running = true;
       while (running)
       {
-        Console.WriteLine();
+        Console.Clear();
         Console.WriteLine("Menu de Clientes");
         Console.WriteLine();
         Console.WriteLine("1. Cadastrar Cliente");
@@ -36,7 +36,6 @@ namespace sistema_vendas_TP1.view
             break;
           case "5":
             running = false;
-            Console.WriteLine("Retornando ao Menu Principal...");
             Console.WriteLine();
             break;
           default:
