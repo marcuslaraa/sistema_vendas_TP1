@@ -7,7 +7,7 @@ using MeuProjeto.Utils;
 
 namespace sistema_vendas_TP1.model
 {
-  internal class Client
+  public class Client
   {
     public string Code { get; set; }
     public string Name { get; set; }

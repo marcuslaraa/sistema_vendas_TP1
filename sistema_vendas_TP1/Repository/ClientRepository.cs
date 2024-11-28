@@ -1,4 +1,6 @@
-﻿using sistema_vendas_TP1.model;
+﻿using sistema_vendas_TP1.controller;
+using sistema_vendas_TP1.model;
+using sistema_vendas_TP1.repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace sistema_vendas_TP1.Repository
 {
-  internal class ClientRepository
+  internal class ClientRepository : IClientRepository
   {
     private List<Client> _clients = new List<Client>();
 
-    public void addClient(Client client)
+    public void CreateClient(Client client)
     {
       _clients.Add(client);
     }
 
-    public string getAllClients()
+    public string GetAllClients()
     {
       StringBuilder sb = new StringBuilder();
 
@@ -29,9 +31,9 @@ namespace sistema_vendas_TP1.Repository
       return sb.ToString();
     }
 
-    public Client getClientByCode(string code)
+    public Client GetClientByCode(string code)
     {
-      Client? client = _clients.Find(c => c.Code == code);
+      Client client = _clients.Find(c => c.Code == code);
       if (client == null)
       {
         throw new Exception($"Cliente não encontrado com o código {code}");
@@ -39,14 +41,15 @@ namespace sistema_vendas_TP1.Repository
       return client;
     }
 
-    public void deleteClientByCode(string code)
+    public bool DeleteClientByCode(string code)
     {
-      Client? client = getClientByCode(code);
+      Client client = GetClientByCode(code);
       if (client == null)
       {
         throw new Exception($"Cliente não encontrado com o código {code}");
       }
       _clients.Remove(client);
+      return true;
     }
 
   }

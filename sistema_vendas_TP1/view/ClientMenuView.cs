@@ -1,9 +1,14 @@
 using System;
+using sistema_vendas_TP1.controller;
+using sistema_vendas_TP1.Repository;
 
 namespace sistema_vendas_TP1.view
 {
   public static class ClientMenuView
   {
+
+    private static readonly IClientController clientController = new ClientController(new ClientRepository());
+
     public static void Show()
     {
       bool running = true;
@@ -19,11 +24,11 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine("5. Voltar ao Menu Principal");
         Console.Write("Selecione uma opção: ");
 
-        string? choice = Console.ReadLine();
+        string choice = Console.ReadLine();
         switch (choice)
         {
           case "1":
-
+            createClient();
             break;
           case "2":
 
@@ -43,6 +48,24 @@ namespace sistema_vendas_TP1.view
             break;
         }
       }
+    }
+
+    private static void createClient()
+    {
+      Console.Clear();
+      Console.WriteLine("Cadastrar Cliente");
+      Console.Write("Nome: ");
+      string name = Console.ReadLine();
+      Console.Write("Idade: ");
+      int age = int.Parse(Console.ReadLine() ?? "0");
+      Console.Write("CPF: ");
+      string cpf = Console.ReadLine();
+
+      clientController.CreateClient(name, age, cpf);
+
+      Console.WriteLine("Cliente cadastrado com sucesso!");
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
     }
   }
 }

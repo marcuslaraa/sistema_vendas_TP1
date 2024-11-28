@@ -25,7 +25,7 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine("4. Encerrar Sistema");
         Console.Write("Selecione uma opção: ");
 
-        string? choice = Console.ReadLine();
+        string choice = Console.ReadLine();
         switch (choice)
         {
           case "1":
