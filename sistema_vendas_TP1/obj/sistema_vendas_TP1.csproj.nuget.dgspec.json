@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marxv\\OneDrive\\Ambiente de Trabalho\\Faculdade\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj": {}
+    "C:\\Users\\marcu\\OneDrive\\Área de Trabalho\\Estudos\\Faculdade\\Analise e Desenvolvimento de Sistemas\\4 Semestre\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marxv\\OneDrive\\Ambiente de Trabalho\\Faculdade\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj": {
+    "C:\\Users\\marcu\\OneDrive\\Área de Trabalho\\Estudos\\Faculdade\\Analise e Desenvolvimento de Sistemas\\4 Semestre\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marxv\\OneDrive\\Ambiente de Trabalho\\Faculdade\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj",
+        "projectUniqueName": "C:\\Users\\marcu\\OneDrive\\Área de Trabalho\\Estudos\\Faculdade\\Analise e Desenvolvimento de Sistemas\\4 Semestre\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj",
         "projectName": "sistema_vendas_TP1",
-        "projectPath": "C:\\Users\\marxv\\OneDrive\\Ambiente de Trabalho\\Faculdade\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj",
-        "packagesPath": "C:\\Users\\marxv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marxv\\OneDrive\\Ambiente de Trabalho\\Faculdade\\sistema_vendas_TP1\\sistema_vendas_TP1\\obj\\",
+        "projectPath": "C:\\Users\\marcu\\OneDrive\\Área de Trabalho\\Estudos\\Faculdade\\Analise e Desenvolvimento de Sistemas\\4 Semestre\\sistema_vendas_TP1\\sistema_vendas_TP1\\sistema_vendas_TP1.csproj",
+        "packagesPath": "C:\\Users\\marcu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marcu\\OneDrive\\Área de Trabalho\\Estudos\\Faculdade\\Analise e Desenvolvimento de Sistemas\\4 Semestre\\sistema_vendas_TP1\\sistema_vendas_TP1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\marxv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\marcu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
