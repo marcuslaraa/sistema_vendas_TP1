@@ -13,6 +13,6 @@ namespace sistema_vendas_TP1.controller
         void CreateClient(string nome, int idade, string cpf);
         Client GetClientByCode(string code);
         string GetClients();
-        bool DeletarClientePorCodigo(string code);
+        bool DeleteClientByCode(string code);
     }
 }

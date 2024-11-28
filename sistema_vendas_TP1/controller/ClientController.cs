@@ -29,7 +29,7 @@ namespace sistema_vendas_TP1.controller
             return clientRepository.GetAllClients();
         }
 
-        public bool DeletarClientePorCodigo(string code)
+        public bool DeleteClientByCode(string code)
         {
             return clientRepository.DeleteClientByCode(code);
         }
