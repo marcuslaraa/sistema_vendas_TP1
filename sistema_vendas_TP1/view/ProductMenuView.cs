@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using sistema_vendas_TP1.Repository;
 
 namespace sistema_vendas_TP1.view
 {
   public class ProductMenuView
   {
+
+    //  private static readonly IProductController productController = new ProductController(new ProductRepository());
     public static void show()
     {
       bool running = true;
@@ -22,22 +25,22 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine("5. Voltar ao Menu Principal");
         Console.Write("Selecione uma opção: ");
 
-        string choice = Console.ReadLine();
+        int choice = int.Parse(Console.ReadLine());
         switch (choice)
         {
-          case "1":
+          case 1:
+            createProduct();
+            break;
+          case 2:
 
             break;
-          case "2":
+          case 3:
 
             break;
-          case "3":
+          case 4:
 
             break;
-          case "4":
-
-            break;
-          case "5":
+          case 5:
             running = false;
             Console.WriteLine();
             break;
@@ -46,6 +49,25 @@ namespace sistema_vendas_TP1.view
             break;
         }
       }
+    }
+
+    private static void createProduct()
+    {
+      Console.Clear();
+      Console.WriteLine("Cadastrar Produto");
+      Console.Write("Nome: ");
+      string name = Console.ReadLine();
+      Console.Write("Preço: ");
+      double price = double.Parse(Console.ReadLine());
+      Console.Write("Marca: ");
+      string brand = Console.ReadLine();
+      Console.Write("Modelo: ");
+      string model = Console.ReadLine();
+      Console.WriteLine("Descrição: ");
+      string description = Console.ReadLine();
+
+      // Product product = new Product(name, price, quantity, code);
+      // productController.Create(product);
     }
   }
 }

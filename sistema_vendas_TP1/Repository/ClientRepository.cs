@@ -18,17 +18,9 @@ namespace sistema_vendas_TP1.Repository
       _clients.Add(client);
     }
 
-    public string GetAllClients()
+    public List<Client> GetAllClients()
     {
-      StringBuilder sb = new StringBuilder();
-
-      foreach (var client in _clients)
-      {
-        sb.AppendLine(client.ToString());
-        sb.AppendLine("----------");
-      }
-
-      return sb.ToString();
+      return new List<Client>(_clients);
     }
 
     public Client GetClientByCode(string code)
@@ -36,7 +28,7 @@ namespace sistema_vendas_TP1.Repository
       Client client = _clients.Find(c => c.Code == code);
       if (client == null)
       {
-        throw new Exception($"Cliente não encontrado com o código {code}");
+        return null;
       }
       return client;
     }
@@ -46,7 +38,7 @@ namespace sistema_vendas_TP1.Repository
       Client client = GetClientByCode(code);
       if (client == null)
       {
-        throw new Exception($"Cliente não encontrado com o código {code}");
+        return false;
       }
       _clients.Remove(client);
       return true;

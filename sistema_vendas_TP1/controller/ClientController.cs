@@ -24,7 +24,7 @@ namespace sistema_vendas_TP1.controller
             return clientRepository.GetClientByCode(code);
         }
 
-        public string GetClients()
+        public List<Client> GetClients()
         {
             return clientRepository.GetAllClients();
         }

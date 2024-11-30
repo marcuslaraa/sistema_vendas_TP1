@@ -1,5 +1,6 @@
 using System;
 using sistema_vendas_TP1.controller;
+using sistema_vendas_TP1.model;
 using sistema_vendas_TP1.Repository;
 
 namespace sistema_vendas_TP1.view
@@ -14,7 +15,7 @@ namespace sistema_vendas_TP1.view
       bool running = true;
       while (running)
       {
-        Console.Clear();
+        // Console.Clear();
         Console.WriteLine("Menu de Clientes");
         Console.WriteLine();
         Console.WriteLine("1. Cadastrar Cliente");
@@ -24,22 +25,22 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine("5. Voltar ao Menu Principal");
         Console.Write("Selecione uma opção: ");
 
-        string choice = Console.ReadLine();
+        int choice = int.Parse(Console.ReadLine());
         switch (choice)
         {
-          case "1":
+          case 1:
             createClient();
             break;
-          case "2":
-
+          case 2:
+            SearchClientByCode();
             break;
-          case "3":
-
+          case 3:
+            ListClients();
             break;
-          case "4":
-
+          case 4:
+            DeleteClientByCode();
             break;
-          case "5":
+          case 5:
             running = false;
             Console.WriteLine();
             break;
@@ -64,6 +65,63 @@ namespace sistema_vendas_TP1.view
       clientController.CreateClient(name, age, cpf);
 
       Console.WriteLine("Cliente cadastrado com sucesso!");
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
+    }
+
+    private static void SearchClientByCode()
+    {
+      Console.Clear();
+      Console.WriteLine("Buscar Cliente por Código");
+      Console.Write("Código: ");
+      string code = Console.ReadLine();
+
+      var client = clientController.GetClientByCode(code);
+      if (client != null)
+      {
+        Console.WriteLine(client.ToString());
+      }
+      else
+      {
+        Console.WriteLine("Cliente não encontrado.");
+      }
+
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
+    }
+
+    private static void ListClients()
+    {
+      Console.Clear();
+      Console.WriteLine("Listar Clientes");
+      List<Client> clients = clientController.GetClients();
+      foreach (var client in clients)
+      {
+        Console.WriteLine(client.ToString());
+        Console.WriteLine("----------");
+      }
+
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
+    }
+
+    private static void DeleteClientByCode()
+    {
+      Console.Clear();
+      Console.WriteLine("Deletar Cliente por Código");
+      Console.Write("Código: ");
+      string code = Console.ReadLine();
+
+      bool success = clientController.DeleteClientByCode(code);
+      if (success)
+      {
+        Console.WriteLine("Cliente deletado com sucesso.");
+      }
+      else
+      {
+        Console.WriteLine("Cliente não encontrado.");
+      }
+
       Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
       Console.ReadKey();
     }

@@ -7,7 +7,7 @@ namespace sistema_vendas_TP1.repository
     {
         void CreateClient(Client client);
         Client GetClientByCode(string code);
-        string GetAllClients();
+        List<Client> GetAllClients();
         bool DeleteClientByCode(string code);
     }
 }
