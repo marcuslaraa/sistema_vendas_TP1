@@ -1,37 +1,12 @@
-using System.Collections.Generic;
 using sistema_vendas_TP1.model;
-using sistema_vendas_TP1.repository;
+using sistema_vendas_TP1.Repository;
 
 namespace sistema_vendas_TP1.controller
 {
-    public class ClientController : IClientController
+    public class ClientController : BaseController<Client>
     {
-        private readonly IClientRepository clientRepository;
-
-        public ClientController(IClientRepository clientRepository)
+        public ClientController(ClientRepository clientRepository) : base(clientRepository)
         {
-            this.clientRepository = clientRepository;
-        }
-
-        public void CreateClient(string nome, int idade, string cpf)
-        {
-            Client newClient = new Client(nome, idade, cpf);
-            clientRepository.CreateClient(newClient);
-        }
-
-        public Client GetClientByCode(string code)
-        {
-            return clientRepository.GetClientByCode(code);
-        }
-
-        public List<Client> GetClients()
-        {
-            return clientRepository.GetAllClients();
-        }
-
-        public bool DeleteClientByCode(string code)
-        {
-            return clientRepository.DeleteClientByCode(code);
         }
     }
 }

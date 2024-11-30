@@ -30,7 +30,7 @@ namespace sistema_vendas_TP1.Repository
 
     public Sale getSaleByCode(int code)
     {
-      Sale? sale = _sales.Find(s => s.Code == code);
+      Sale sale = _sales.Find(s => s.Code == code);
       if (sale == null)
       {
         throw new Exception($"Venda não encontrada com o código {code}");

@@ -8,7 +8,7 @@ namespace sistema_vendas_TP1.view
   public static class ClientMenuView
   {
 
-    private static readonly IClientController clientController = new ClientController(new ClientRepository());
+    private static readonly ClientController clientController = new ClientController(new ClientRepository());
 
     public static void Show()
     {
@@ -62,7 +62,8 @@ namespace sistema_vendas_TP1.view
       Console.Write("CPF: ");
       string cpf = Console.ReadLine();
 
-      clientController.CreateClient(name, age, cpf);
+      Client client = new Client(name, age, cpf);
+      clientController.Create(client);
 
       Console.WriteLine("Cliente cadastrado com sucesso!");
       Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
@@ -73,10 +74,10 @@ namespace sistema_vendas_TP1.view
     {
       Console.Clear();
       Console.WriteLine("Buscar Cliente por Código");
-      Console.Write("Código: ");
+      Console.Write("Insira o código: ");
       string code = Console.ReadLine();
 
-      var client = clientController.GetClientByCode(code);
+      var client = clientController.GetByCode(code);
       if (client != null)
       {
         Console.WriteLine(client.ToString());
@@ -94,7 +95,14 @@ namespace sistema_vendas_TP1.view
     {
       Console.Clear();
       Console.WriteLine("Listar Clientes");
-      List<Client> clients = clientController.GetClients();
+      List<Client> clients = clientController.GetAll();
+      if (clients.Count == 0)
+      {
+        Console.WriteLine();
+        Console.WriteLine("Nenhum cliente cadastrado.");
+        Console.WriteLine();
+        return;
+      }
       foreach (var client in clients)
       {
         Console.WriteLine(client.ToString());
@@ -112,7 +120,7 @@ namespace sistema_vendas_TP1.view
       Console.Write("Código: ");
       string code = Console.ReadLine();
 
-      bool success = clientController.DeleteClientByCode(code);
+      bool success = clientController.DeleteByCode(code);
       if (success)
       {
         Console.WriteLine("Cliente deletado com sucesso.");

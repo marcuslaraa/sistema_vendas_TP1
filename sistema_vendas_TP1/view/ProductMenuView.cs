@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using sistema_vendas_TP1.controller;
+using sistema_vendas_TP1.model;
 using sistema_vendas_TP1.Repository;
 
 namespace sistema_vendas_TP1.view
@@ -9,7 +11,7 @@ namespace sistema_vendas_TP1.view
   public class ProductMenuView
   {
 
-    //  private static readonly IProductController productController = new ProductController(new ProductRepository());
+    private static readonly ProductController productController = new ProductController(new ProductRepository());
     public static void show()
     {
       bool running = true;
@@ -32,13 +34,13 @@ namespace sistema_vendas_TP1.view
             createProduct();
             break;
           case 2:
-
+            searchProductByCode();
             break;
           case 3:
-
+            listProducts();
             break;
           case 4:
-
+            deleteProductByCode();
             break;
           case 5:
             running = false;
@@ -55,19 +57,76 @@ namespace sistema_vendas_TP1.view
     {
       Console.Clear();
       Console.WriteLine("Cadastrar Produto");
-      Console.Write("Nome: ");
-      string name = Console.ReadLine();
-      Console.Write("Preço: ");
-      double price = double.Parse(Console.ReadLine());
       Console.Write("Marca: ");
       string brand = Console.ReadLine();
       Console.Write("Modelo: ");
       string model = Console.ReadLine();
       Console.WriteLine("Descrição: ");
       string description = Console.ReadLine();
+      Console.Write("Preço: ");
+      double price = double.Parse(Console.ReadLine());
 
-      // Product product = new Product(name, price, quantity, code);
-      // productController.Create(product);
+      Product product = new Product(brand, model, description, price);
+      productController.Create(product);
+    }
+
+    private static Product searchProductByCode()
+    {
+      Console.Clear();
+      Console.WriteLine("Buscar Produto por Código");
+      Console.Write("Insira o código: ");
+      string code = Console.ReadLine();
+      Product product = productController.GetByCode(code);
+      if (product != null)
+      {
+        Console.WriteLine(product);
+      }
+      else
+      {
+        Console.WriteLine("Produto não encontrado!");
+      }
+      return product;
+    }
+
+    private static void listProducts()
+    {
+      Console.Clear();
+      Console.WriteLine("Listar Produtos");
+      List<Product> products = productController.GetAll();
+      if (products.Count == 0)
+      {
+        Console.WriteLine();
+        Console.WriteLine("Nenhum produto cadastrado.");
+        Console.WriteLine();
+        return;
+      }
+      foreach (var product in products)
+      {
+        Console.WriteLine(product.ToString());
+        Console.WriteLine("----------");
+      }
+
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
+    }
+
+    private static void deleteProductByCode()
+    {
+      Console.Clear();
+      Console.WriteLine("Deletar Produto por Código");
+      Console.Write("Insira o código: ");
+      string code = Console.ReadLine();
+      bool success = productController.DeleteByCode(code);
+      if (success)
+      {
+        Console.WriteLine("Produto deletado com sucesso!");
+      }
+      else
+      {
+        Console.WriteLine("Produto não encontrado!");
+      }
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
     }
   }
 }

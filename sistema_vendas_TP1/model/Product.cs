@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sistema_vendas_TP1.model
 {
-  public class Product
+  public class Product : IGenericProps
   {
     public string Code { get; set; }
     public string Brand { get; set; }
