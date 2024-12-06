@@ -29,10 +29,10 @@ namespace sistema_vendas_TP1.view
         switch (choice)
         {
           case 1:
-            createClient();
+            CreateClient();
             break;
           case 2:
-            SearchClientByCode();
+            FindClientByCode();
             break;
           case 3:
             ListClients();
@@ -51,7 +51,7 @@ namespace sistema_vendas_TP1.view
       }
     }
 
-    private static void createClient()
+    private static void CreateClient()
     {
       Console.Clear();
       Console.WriteLine("Cadastrar Cliente");
@@ -70,7 +70,7 @@ namespace sistema_vendas_TP1.view
       Console.ReadKey();
     }
 
-    private static void SearchClientByCode()
+    private static void FindClientByCode()
     {
       Console.Clear();
       Console.WriteLine("Buscar Cliente por Código");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sistema_vendas_TP1.utils;
 
 namespace sistema_vendas_TP1.model
 {
@@ -14,19 +15,19 @@ namespace sistema_vendas_TP1.model
     public List<string> ProductCodes { get; set; }
     public double TotalValue { get; private set; }
 
-    public Sale(string clientCode)
+    public Sale(string clientCode, List<string> productCodes)
     {
-      Code = GenerateCode();
+      Code = GenerateCodeClass.GenerateCode("S", _count);
       ClientCode = clientCode;
-      ProductCodes = new List<string>();
+      ProductCodes = productCodes;
       TotalValue = 0;
     }
 
-    private string GenerateCode()
-    {
-      _count++;
-      return $"S{_count:D4}";
-    }
+    // private string GenerateCode()
+    // {
+    //   _count++;
+    //   return $"S{_count:D4}";
+    // }
 
     public void AddProduct(string productCode, double productPrice)
     {
@@ -41,10 +42,18 @@ namespace sistema_vendas_TP1.model
 
     public override string ToString()
     {
+      int index = 1;
       StringBuilder sb = new StringBuilder();
       sb.AppendLine($"Código: {Code}");
       sb.AppendLine($"Código do Cliente: {ClientCode}");
-      sb.AppendLine($"Códigos dos Produtos: {string.Join(", ", ProductCodes)}");
+      foreach (string productCode in ProductCodes)
+      {
+        if (productCode != "0")
+        {
+          sb.AppendLine($"Código dos Produto {index}: {string.Join(", ", productCode)}");
+        }
+        index++;
+      }
       sb.AppendLine($"Valor Total: {TotalValue}");
 
       return sb.ToString();

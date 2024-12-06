@@ -31,16 +31,16 @@ namespace sistema_vendas_TP1.view
         switch (choice)
         {
           case 1:
-            createProduct();
+            CreateProduct();
             break;
           case 2:
-            searchProductByCode();
+            FindProductByCode();
             break;
           case 3:
-            listProducts();
+            ListProducts();
             break;
           case 4:
-            deleteProductByCode();
+            DeleteProductByCode();
             break;
           case 5:
             running = false;
@@ -53,7 +53,7 @@ namespace sistema_vendas_TP1.view
       }
     }
 
-    private static void createProduct()
+    private static void CreateProduct()
     {
       Console.Clear();
       Console.WriteLine("Cadastrar Produto");
@@ -70,7 +70,7 @@ namespace sistema_vendas_TP1.view
       productController.Create(product);
     }
 
-    private static Product searchProductByCode()
+    private static Product FindProductByCode()
     {
       Console.Clear();
       Console.WriteLine("Buscar Produto por Código");
@@ -88,7 +88,7 @@ namespace sistema_vendas_TP1.view
       return product;
     }
 
-    private static void listProducts()
+    private static void ListProducts()
     {
       Console.Clear();
       Console.WriteLine("Listar Produtos");
@@ -110,7 +110,7 @@ namespace sistema_vendas_TP1.view
       Console.ReadKey();
     }
 
-    private static void deleteProductByCode()
+    private static void DeleteProductByCode()
     {
       Console.Clear();
       Console.WriteLine("Deletar Produto por Código");

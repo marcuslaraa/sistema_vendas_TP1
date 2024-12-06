@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MeuProjeto.Utils;
+using sistema_vendas_TP1.utils;
 
 namespace sistema_vendas_TP1.model
 {
   public class Client : IGenericProps
   {
+    private static int _count = 0;
     public string Code { get; set; }
     public string Name { get; set; }
     public int Age { get; set; }
@@ -16,7 +18,7 @@ namespace sistema_vendas_TP1.model
 
     public Client(string name, int age, string cpf)
     {
-      Code = Guid.NewGuid().ToString();
+      Code = GenerateCodeClass.GenerateCode("P", _count);
       Name = name;
       Age = age;
       Cpf = cpf;

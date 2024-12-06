@@ -1,9 +1,11 @@
 using System.Text;
+using sistema_vendas_TP1.utils;
 
 namespace sistema_vendas_TP1.model
 {
   public class Product : IGenericProps
   {
+    private static int _count = 0;
     public string Code { get; set; }
     public string Brand { get; set; }
     public string Model { get; set; }
@@ -12,7 +14,7 @@ namespace sistema_vendas_TP1.model
 
     public Product(string brand, string model, string description, double price)
     {
-      Code = Guid.NewGuid().ToString();
+      Code = GenerateCodeClass.GenerateCode("P", _count);
       Brand = brand;
       Model = model;
       Description = description;
