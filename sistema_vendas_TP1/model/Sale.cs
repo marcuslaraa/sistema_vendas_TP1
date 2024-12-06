@@ -50,7 +50,7 @@ namespace sistema_vendas_TP1.model
       {
         if (productCode != "0")
         {
-          sb.AppendLine($"Código dos Produto {index}: {string.Join(", ", productCode)}");
+          sb.AppendLine($"Código do Produto {index}: {string.Join(", ", productCode)}");
         }
         index++;
       }

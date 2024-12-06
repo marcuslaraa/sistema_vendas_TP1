@@ -2,6 +2,7 @@ using System;
 using sistema_vendas_TP1.controller;
 using sistema_vendas_TP1.model;
 using sistema_vendas_TP1.Repository;
+using sistema_vendas_TP1.utils;
 
 namespace sistema_vendas_TP1.view
 {
@@ -62,7 +63,17 @@ namespace sistema_vendas_TP1.view
       Console.Write("CPF: ");
       string cpf = Console.ReadLine();
 
-      Client client = new Client(name, age, cpf);
+      string cpfClean = GenerateCodeClass.CleanCpf(cpf);
+
+      if (cpfClean.Length != 11)
+      {
+        Console.WriteLine("CPF inválido.");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+        Console.ReadKey();
+        return;
+      }
+
+      Client client = new Client(name, age, cpfClean);
       clientController.Create(client);
 
       Console.WriteLine("Cliente cadastrado com sucesso!");

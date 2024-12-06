@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MeuProjeto.Utils;
+﻿using System.Text;
 using sistema_vendas_TP1.utils;
 
 namespace sistema_vendas_TP1.model
