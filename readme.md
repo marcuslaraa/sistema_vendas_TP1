@@ -52,10 +52,25 @@ Este é um sistema de vendas desenvolvido como parte do Trabalho Avaliativo da d
   - `Format.cs`
 
 - **View**: Contém as classes de visualização que interagem com o usuário.
+
   - `ClientMenuView.cs`
   - `ProductMenuView.cs`
   - `SaleMenuView.cs`
   - `MainMenuView.cs`
+
+  ## Regras de Negócio
+
+  - **Clientes**:
+
+    - Não pode cadastrar clientes menores de 18 anos.
+    - Clientes não podem ser excluídos caso façam parte de uma venda.
+
+  - **Produtos**:
+
+    - Produtos não podem ser excluídos caso façam parte de uma venda.
+
+  - **Vendas**:
+    - Só é possível cadastrar uma venda se houver um `clientCode` e no mínimo um produto.
 
 ## Como Executar
 
