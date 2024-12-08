@@ -106,7 +106,7 @@ namespace sistema_vendas_TP1.view
         }
         else
         {
-          productSales.Add(new ProductSale { ProductCode = productCode, Quantity = 1 });
+          productSales.Add(new ProductSale { ProductCode = productCode, Quantity = 1, Price = product.Price });
         }
 
         countProductsCode++;

@@ -9,10 +9,11 @@ namespace sistema_vendas_TP1.model
     {
         public string ProductCode { get; set; }
         public int Quantity { get; set; }
+        public double Price { get; set; }
 
         public override string ToString()
         {
-            return $"Código do Produto: {ProductCode} - Quantidade: {Quantity}";
+            return $"Código do Produto: {ProductCode} - Quantidade: {Quantity} - Preço: {Price}";
         }
     }
 }

@@ -19,19 +19,18 @@ namespace sistema_vendas_TP1.model
       Code = GenerateCodeClass.GenerateCode("S");
       ClientCode = clientCode;
       ProductSale = productCodes;
-      TotalValue = 0;
+      TotalValue = CalculateTotalValue();
     }
 
-    // public void AddProduct(string productCode, double productPrice)
-    // {
-    //   ProductCodes.Add(productCode);
-    //   TotalValue += productPrice;
-    // }
-
-    // public void CalculateTotalValue(double productPrice)
-    // {
-    //   TotalValue += productPrice;
-    // }
+    private double CalculateTotalValue()
+    {
+      double totalValue = 0;
+      foreach (ProductSale product in ProductSale)
+      {
+        totalValue += product.Quantity * product.Price;
+      }
+      return totalValue;
+    }
 
     public override string ToString()
     {
