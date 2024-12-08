@@ -1,6 +1,6 @@
 # Sistema de Vendas TP1
 
-Este é um sistema de vendas desenvolvido como parte do Trabalho Prático 1 (TP1) da disciplina de [nome da disciplina]. O sistema permite gerenciar clientes, produtos e vendas, armazenando os dados em arquivos JSON.
+Este é um sistema de vendas desenvolvido como parte do Trabalho Avaliativo da disciplina de Técnicas de Programação 1. O sistema permite gerenciar clientes, produtos e vendas, armazenando os dados em memória.
 
 ## Funcionalidades
 
@@ -40,7 +40,7 @@ Este é um sistema de vendas desenvolvido como parte do Trabalho Prático 1 (TP1
   - `Sale.cs`
   - `ProductSale.cs`
 
-- **Repository**: Contém os repositórios que manipulam os dados armazenados em arquivos JSON.
+- **Repository**: Contém os repositórios que manipulam os dados armazenados em memória.
 
   - `BaseRepository`
   - `ClientRepository.cs`
@@ -55,19 +55,20 @@ Este é um sistema de vendas desenvolvido como parte do Trabalho Prático 1 (TP1
   - `ClientMenuView.cs`
   - `ProductMenuView.cs`
   - `SaleMenuView.cs`
+  - `MainMenuView.cs`
 
 ## Como Executar
 
 1. Clone o repositório:
 
 ```bash
-  git clone https://github.com/seu-usuario/seu-repositorio.git
+  git clone https://github.com/marcuslaraa/sistema_vendas_TP1
 
 ```
 
 2. Navegue até o diretório do projeto
 
-**cd seu-repositorio**
+**cd sistema_vendas_TP1**
 
 3. Compile e execute o projeto
 
