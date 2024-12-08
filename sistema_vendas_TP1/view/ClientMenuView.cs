@@ -9,7 +9,7 @@ namespace sistema_vendas_TP1.view
   public static class ClientMenuView
   {
 
-    private static readonly ClientController clientController = new ClientController(new ClientRepository());
+    private static readonly ClientController clientController = new ClientController(ClientRepository.Instance);
 
     public static void Show()
     {
@@ -63,7 +63,7 @@ namespace sistema_vendas_TP1.view
       Console.Write("CPF: ");
       string cpf = Console.ReadLine();
 
-      string cpfClean = GenerateCodeClass.CleanCpf(cpf);
+      string cpfClean = Format.CleanCpf(cpf);
 
       if (cpfClean.Length != 11)
       {

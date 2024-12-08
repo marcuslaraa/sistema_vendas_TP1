@@ -11,7 +11,7 @@ namespace sistema_vendas_TP1.view
   public class ProductMenuView
   {
 
-    private static readonly ProductController productController = new ProductController(new ProductRepository());
+    private static readonly ProductController productController = new ProductController(ProductRepository.Instance);
     public static void show()
     {
       bool running = true;
@@ -70,7 +70,7 @@ namespace sistema_vendas_TP1.view
       productController.Create(product);
     }
 
-    private static Product FindProductByCode()
+    private static void FindProductByCode()
     {
       Console.Clear();
       Console.WriteLine("Buscar Produto por Código");
@@ -79,13 +79,14 @@ namespace sistema_vendas_TP1.view
       Product product = productController.GetByCode(code);
       if (product != null)
       {
-        Console.WriteLine(product);
+        Console.WriteLine(product.ToString());
       }
       else
       {
         Console.WriteLine("Produto não encontrado!");
       }
-      return product;
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
     }
 
     private static void ListProducts()

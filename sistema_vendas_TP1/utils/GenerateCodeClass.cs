@@ -1,24 +1,42 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
 namespace sistema_vendas_TP1.utils
 {
 	public static class GenerateCodeClass
 	{
-		public static string GenerateCode(string prefix, int code)
+		private static int _countCodeClient = 0;
+		private static int _countCodeProduct = 0;
+		private static int _countCodeSale = 0;
+		public static string GenerateCode(string prefix)
 		{
-			code++;
-			return $"{prefix}{code:D4}";
+
+			switch (prefix)
+			{
+				case "C":
+					return GenerateCodeClient(prefix);
+				case "P":
+					return GenerateCodeProduct(prefix);
+				case "S":
+					return GenerateCodeSale(prefix);
+				default:
+					return null;
+			}
 		}
 
-		public static string CleanCpf(string cpf)
+		private static string GenerateCodeClient(string prefix)
 		{
-			return Regex.Replace(cpf, @"[.\-]", "");
+			_countCodeClient++;
+			return $"{prefix}{_countCodeClient:D4}";
 		}
 
+		private static string GenerateCodeProduct(string prefix)
+		{
+			_countCodeProduct++;
+			return $"{prefix}{_countCodeProduct:D4}";
+		}
+
+		private static string GenerateCodeSale(string prefix)
+		{
+			_countCodeSale++;
+			return $"{prefix}{_countCodeSale:D4}";
+		}
 	}
-
 }

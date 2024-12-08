@@ -5,7 +5,6 @@ namespace sistema_vendas_TP1.model
 {
   public class Client : IGenericProps
   {
-    private static int _count = 0;
     public string Code { get; set; }
     public string Name { get; set; }
     public int Age { get; set; }
@@ -13,7 +12,7 @@ namespace sistema_vendas_TP1.model
 
     public Client(string name, int age, string cpf)
     {
-      Code = GenerateCodeClass.GenerateCode("P", _count);
+      Code = GenerateCodeClass.GenerateCode("C");
       Name = name;
       Age = age;
       Cpf = cpf;

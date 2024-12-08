@@ -7,8 +7,9 @@ namespace sistema_vendas_TP1.view
   public class SaleMenuView
   {
 
-    private static readonly SaleController saleController = new SaleController(new SaleRepository());
-    private static readonly ClientRepository clientRepository = new ClientRepository();
+    private static readonly SaleController saleController = new SaleController(SaleRepository.Instance);
+    private static readonly ClientRepository clientRepository = ClientRepository.Instance;
+    private static readonly ProductRepository productRepository = ProductRepository.Instance;
     public static void show()
     {
       bool running = true;
@@ -52,40 +53,76 @@ namespace sistema_vendas_TP1.view
 
     private static void CreateSale()
     {
-      List<string> productCodes = new List<string>();
+      List<ProductSale> productSales = new List<ProductSale>();
       int countProductsCode = 0;
 
-      Console.Clear();
+      // Console.Clear();
       Console.WriteLine("Cadastrar Venda");
       Console.Write("Insira o código do cliente: ");
 
-      string clientCode = Console.ReadLine();
+      string clientCode = Console.ReadLine().ToUpper();
 
       Client clientExist = clientRepository.GetByCode(clientCode);
 
-      // if (clientExist == null)
-      // {
-      //   Console.Clear();
-      //   Console.WriteLine("Cliente não existe!");
-      //   Console.WriteLine("Pressione qualquer tecla para voltar o menu...");
-      //   Console.ReadKey();
-      //   return;
-      // }
+      if (clientExist == null)
+      {
+        Console.Clear();
+        Console.WriteLine("Cliente não existe!");
+        Console.WriteLine("Pressione qualquer tecla para voltar o menu...");
+        Console.ReadKey();
+        return;
+      }
 
       while (true)
       {
-        Console.Write($"Insira o {countProductsCode + 1}º código do produto: ");
-        string addProduct = Console.ReadLine().ToUpper();
-        productCodes.Add(addProduct);
-        countProductsCode++;
+        Console.Write($"Insira o código do produto ou '0' para finalizar: ");
+        string productCode = Console.ReadLine().ToUpper();
 
-        if (addProduct == "0")
+
+        if (productCode == "0")
         {
           break;
         }
+
+        var product = productRepository.GetByCode(productCode);
+        while (product == null)
+        {
+          Console.WriteLine("Produto não existe!");
+          Console.Write("Insira um código de produto válido ou '0' para finalizar: ");
+          productCode = Console.ReadLine().ToUpper();
+
+          if (productCode == "0")
+          {
+            break;
+          }
+
+          product = productRepository.GetByCode(productCode);
+        }
+
+        var existingProductSale = productSales.FirstOrDefault(ps => ps.ProductCode == productCode);
+        if (existingProductSale != null)
+        {
+          existingProductSale.Quantity++;
+        }
+        else
+        {
+          productSales.Add(new ProductSale { ProductCode = productCode, Quantity = 1 });
+        }
+
+        countProductsCode++;
+
+
       }
 
-      Sale sale = new Sale(clientCode, productCodes);
+      if (productSales.Count == 0)
+      {
+        Console.WriteLine("Venda não cadastrada! Nenhum produto foi adicionado.");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+        Console.ReadKey();
+        return;
+      }
+
+      Sale sale = new Sale(clientCode, productSales);
       saleController.Create(sale);
       Console.WriteLine("Venda cadastrada com sucesso!");
     }
@@ -93,8 +130,10 @@ namespace sistema_vendas_TP1.view
     private static void ListSales()
     {
       Console.Clear();
-      Console.WriteLine("Listar Produtos");
+      Console.WriteLine("Listar Vendas");
+
       List<Sale> sales = saleController.GetAll();
+
       if (sales.Count == 0)
       {
         Console.WriteLine();
@@ -102,6 +141,7 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine();
         return;
       }
+
       foreach (var sale in sales)
       {
         Console.WriteLine(sale.ToString());
@@ -112,22 +152,21 @@ namespace sistema_vendas_TP1.view
       Console.ReadKey();
     }
 
-    private static Sale FindSaleByCode()
+    private static void FindSaleByCode()
     {
       Console.Clear();
-      Console.WriteLine("Buscar Produto por Código");
+      Console.WriteLine("Buscar venda por Código");
       Console.Write("Insira o código: ");
       string code = Console.ReadLine();
       Sale sale = saleController.GetByCode(code);
       if (sale != null)
       {
-        Console.WriteLine(sale);
+        Console.WriteLine(sale.ToString());
       }
       else
       {
         Console.WriteLine("Venda não encontrada!");
       }
-      return sale;
     }
   }
 }
