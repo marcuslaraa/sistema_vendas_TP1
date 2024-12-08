@@ -101,7 +101,7 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine();
         return;
       }
-      foreach (var product in products)
+      foreach (Product product in products)
       {
         Console.WriteLine(product.ToString());
         Console.WriteLine("----------");

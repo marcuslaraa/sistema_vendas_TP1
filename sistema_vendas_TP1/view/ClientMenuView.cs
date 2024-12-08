@@ -88,7 +88,7 @@ namespace sistema_vendas_TP1.view
       Console.Write("Insira o código: ");
       string code = Console.ReadLine();
 
-      var client = clientController.GetByCode(code);
+      Client client = clientController.GetByCode(code);
       if (client != null)
       {
         Console.WriteLine(client.ToString());
@@ -114,7 +114,7 @@ namespace sistema_vendas_TP1.view
         Console.WriteLine();
         return;
       }
-      foreach (var client in clients)
+      foreach (Client client in clients)
       {
         Console.WriteLine(client.ToString());
         Console.WriteLine("----------");

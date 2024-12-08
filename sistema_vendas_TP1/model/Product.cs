@@ -27,7 +27,7 @@ namespace sistema_vendas_TP1.model
       sb.AppendLine($"Marca: {Brand}");
       sb.AppendLine($"Modelo: {Model}");
       sb.AppendLine($"Descrição: {Description}");
-      sb.AppendLine($"Preço: {Price}");
+      sb.AppendLine($"Preço: {Format.FormatToBRL(Price)}");
 
       return sb.ToString();
     }

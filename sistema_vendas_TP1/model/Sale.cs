@@ -34,7 +34,6 @@ namespace sistema_vendas_TP1.model
 
     public override string ToString()
     {
-      int index = 1;
       StringBuilder sb = new StringBuilder();
       sb.AppendLine($"Código: {Code}");
       sb.AppendLine($"Código do Cliente: {ClientCode}");
@@ -44,9 +43,8 @@ namespace sistema_vendas_TP1.model
         {
           sb.AppendLine(productCode.ToString());
         }
-        index++;
       }
-      sb.AppendLine($"Valor Total: {TotalValue}");
+      sb.AppendLine($"Valor Total: {Format.FormatToBRL(TotalValue)}");
 
       return sb.ToString();
     }

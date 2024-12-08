@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using sistema_vendas_TP1.utils;
 
 namespace sistema_vendas_TP1.model
 {
@@ -13,7 +10,7 @@ namespace sistema_vendas_TP1.model
 
         public override string ToString()
         {
-            return $"Código do Produto: {ProductCode} - Quantidade: {Quantity} - Preço: {Price}";
+            return $"Código do Produto: {ProductCode} - Quantidade: {Quantity} - Preço: {Format.FormatToBRL(Price)}";
         }
     }
 }

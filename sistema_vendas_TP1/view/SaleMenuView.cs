@@ -1,6 +1,8 @@
+using System.Globalization;
 using sistema_vendas_TP1.controller;
 using sistema_vendas_TP1.model;
 using sistema_vendas_TP1.Repository;
+using sistema_vendas_TP1.utils;
 
 namespace sistema_vendas_TP1.view
 {
@@ -10,6 +12,7 @@ namespace sistema_vendas_TP1.view
     private static readonly SaleController saleController = new SaleController(SaleRepository.Instance);
     private static readonly ClientRepository clientRepository = ClientRepository.Instance;
     private static readonly ProductRepository productRepository = ProductRepository.Instance;
+    private static readonly SaleRepository saleRepository = SaleRepository.Instance;
     public static void show()
     {
       bool running = true;
@@ -38,7 +41,7 @@ namespace sistema_vendas_TP1.view
             ListSales();
             break;
           case "4":
-
+            TotalValueSales();
             break;
           case "5":
             running = false;
@@ -84,7 +87,7 @@ namespace sistema_vendas_TP1.view
           break;
         }
 
-        var product = productRepository.GetByCode(productCode);
+        Product product = productRepository.GetByCode(productCode);
         while (product == null)
         {
           Console.WriteLine("Produto não existe!");
@@ -99,7 +102,7 @@ namespace sistema_vendas_TP1.view
           product = productRepository.GetByCode(productCode);
         }
 
-        var existingProductSale = productSales.FirstOrDefault(ps => ps.ProductCode == productCode);
+        ProductSale existingProductSale = productSales.FirstOrDefault(ps => ps.ProductCode == productCode);
         if (existingProductSale != null)
         {
           existingProductSale.Quantity++;
@@ -142,7 +145,7 @@ namespace sistema_vendas_TP1.view
         return;
       }
 
-      foreach (var sale in sales)
+      foreach (Sale sale in sales)
       {
         Console.WriteLine(sale.ToString());
         Console.WriteLine("----------");
@@ -167,6 +170,27 @@ namespace sistema_vendas_TP1.view
       {
         Console.WriteLine("Venda não encontrada!");
       }
+    }
+
+    private static void TotalValueSales()
+    {
+      double totalValue = 0;
+      int countTotalSales = 0;
+      List<Sale> sales = saleController.GetAll();
+      foreach (Sale sale in sales)
+      {
+        totalValue += sale.TotalValue;
+        countTotalSales++;
+      }
+
+      CultureInfo culture = new CultureInfo("pt-BR");
+      Console.WriteLine($"Total de Vendas: {countTotalSales}");
+      Console.WriteLine($"Valor Total: {Format.FormatToBRL(totalValue)}");
+
+      Console.WriteLine();
+
+      Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+      Console.ReadKey();
     }
   }
 }
