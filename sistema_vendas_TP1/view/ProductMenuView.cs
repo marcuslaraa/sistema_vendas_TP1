@@ -11,7 +11,8 @@ namespace sistema_vendas_TP1.view
   public class ProductMenuView
   {
 
-    private static readonly controller.ProductController productController = new controller.ProductController(Repository.ProductRepository.Instance);
+    private static readonly ProductController productController = new ProductController(Repository.ProductRepository.Instance);
+    private static readonly SaleRepository saleRepository = SaleRepository.Instance;
     public static void show()
     {
       bool running = true;
@@ -115,8 +116,20 @@ namespace sistema_vendas_TP1.view
     {
       Console.Clear();
       Console.WriteLine("Deletar Produto por Código");
+
       Console.Write("Insira o código: ");
       string code = Console.ReadLine().ToUpper();
+
+      Sale hasProductSale = saleRepository.FindProductByCode(code);
+
+      if (hasProductSale != null)
+      {
+        Console.WriteLine("Produto não pode ser deletado, pois está associado a uma venda.");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+        Console.ReadKey();
+        return;
+      }
+
       bool success = productController.DeleteByCode(code);
       if (success)
       {

@@ -28,6 +28,16 @@ namespace sistema_vendas_TP1.Repository
       }
     }
 
+    public Sale FindClientByCode(string code)
+    {
+      return items.Find(sale => sale.ClientCode == code);
+    }
+
+    public Sale FindProductByCode(string code)
+    {
+      return items.Find(sale => sale.ProductSale.Any(product => product.ProductCode == code));
+    }
+
   }
 
 }

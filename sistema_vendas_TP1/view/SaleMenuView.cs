@@ -101,7 +101,7 @@ namespace sistema_vendas_TP1.view
           product = productController.GetByCode(productCode);
         }
 
-        ProductSale existingProductSale = productSales.FirstOrDefault(ps => ps.ProductCode == productCode);
+        ProductSale existingProductSale = productSales.Find(ps => ps.ProductCode == productCode);
         if (existingProductSale != null)
         {
           existingProductSale.Quantity++;

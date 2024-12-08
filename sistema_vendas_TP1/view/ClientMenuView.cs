@@ -10,6 +10,7 @@ namespace sistema_vendas_TP1.view
   {
 
     private static readonly ClientController clientController = new ClientController(ClientRepository.Instance);
+    private static readonly SaleRepository saleRepository = SaleRepository.Instance;
 
     public static void Show()
     {
@@ -56,10 +57,20 @@ namespace sistema_vendas_TP1.view
     {
       Console.Clear();
       Console.WriteLine("Cadastrar Cliente");
+
       Console.Write("Nome: ");
       string name = Console.ReadLine();
+
       Console.Write("Idade: ");
       int age = int.Parse(Console.ReadLine() ?? "0");
+
+      while (age < 18)
+      {
+        Console.WriteLine("Idade inválida. O cliente deve ter no mínimo 18 anos.");
+        Console.Write("Idade: ");
+        age = int.Parse(Console.ReadLine() ?? "0");
+      }
+
       Console.Write("CPF: ");
       string cpf = Console.ReadLine();
 
@@ -128,10 +139,22 @@ namespace sistema_vendas_TP1.view
     {
       Console.Clear();
       Console.WriteLine("Deletar Cliente por Código");
+
       Console.Write("Código: ");
       string code = Console.ReadLine().ToUpper();
 
+      Sale hasClientSale = saleRepository.FindClientByCode(code);
+
+      if (hasClientSale != null)
+      {
+        Console.WriteLine("Cliente possui vendas cadastradas. Não é possível deletar.");
+        Console.WriteLine("Pressione qualquer tecla para voltar ao menu.");
+        Console.ReadKey();
+        return;
+      }
+
       bool success = clientController.DeleteByCode(code);
+
       if (success)
       {
         Console.WriteLine("Cliente deletado com sucesso.");
