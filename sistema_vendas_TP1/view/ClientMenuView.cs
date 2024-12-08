@@ -86,7 +86,7 @@ namespace sistema_vendas_TP1.view
       Console.Clear();
       Console.WriteLine("Buscar Cliente por Código");
       Console.Write("Insira o código: ");
-      string code = Console.ReadLine();
+      string code = Console.ReadLine().ToUpper();
 
       Client client = clientController.GetByCode(code);
       if (client != null)
@@ -129,7 +129,7 @@ namespace sistema_vendas_TP1.view
       Console.Clear();
       Console.WriteLine("Deletar Cliente por Código");
       Console.Write("Código: ");
-      string code = Console.ReadLine();
+      string code = Console.ReadLine().ToUpper();
 
       bool success = clientController.DeleteByCode(code);
       if (success)

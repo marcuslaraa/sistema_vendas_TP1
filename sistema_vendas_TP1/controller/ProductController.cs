@@ -9,7 +9,7 @@ namespace sistema_vendas_TP1.controller
 {
     public class ProductController : BaseController<Product>
     {
-        public ProductController(ProductRepository productRepository) : base(productRepository)
+        public ProductController(Repository.ProductRepository productRepository) : base(productRepository)
         {
         }
     }

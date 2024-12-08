@@ -10,9 +10,8 @@ namespace sistema_vendas_TP1.view
   {
 
     private static readonly SaleController saleController = new SaleController(SaleRepository.Instance);
-    private static readonly ClientRepository clientRepository = ClientRepository.Instance;
-    private static readonly ProductRepository productRepository = ProductRepository.Instance;
-    private static readonly SaleRepository saleRepository = SaleRepository.Instance;
+    private static readonly ClientController clientController = new ClientController(ClientRepository.Instance);
+    private static readonly ProductController productController = new ProductController(ProductRepository.Instance);
     public static void show()
     {
       bool running = true;
@@ -65,7 +64,7 @@ namespace sistema_vendas_TP1.view
 
       string clientCode = Console.ReadLine().ToUpper();
 
-      Client clientExist = clientRepository.GetByCode(clientCode);
+      Client clientExist = clientController.GetByCode(clientCode);
 
       if (clientExist == null)
       {
@@ -87,7 +86,7 @@ namespace sistema_vendas_TP1.view
           break;
         }
 
-        Product product = productRepository.GetByCode(productCode);
+        Product product = productController.GetByCode(productCode);
         while (product == null)
         {
           Console.WriteLine("Produto não existe!");
@@ -99,7 +98,7 @@ namespace sistema_vendas_TP1.view
             break;
           }
 
-          product = productRepository.GetByCode(productCode);
+          product = productController.GetByCode(productCode);
         }
 
         ProductSale existingProductSale = productSales.FirstOrDefault(ps => ps.ProductCode == productCode);
@@ -132,7 +131,6 @@ namespace sistema_vendas_TP1.view
 
     private static void ListSales()
     {
-      Console.Clear();
       Console.WriteLine("Listar Vendas");
 
       List<Sale> sales = saleController.GetAll();
@@ -160,7 +158,7 @@ namespace sistema_vendas_TP1.view
       Console.Clear();
       Console.WriteLine("Buscar venda por Código");
       Console.Write("Insira o código: ");
-      string code = Console.ReadLine();
+      string code = Console.ReadLine().ToUpper();
       Sale sale = saleController.GetByCode(code);
       if (sale != null)
       {
@@ -182,8 +180,6 @@ namespace sistema_vendas_TP1.view
         totalValue += sale.TotalValue;
         countTotalSales++;
       }
-
-      CultureInfo culture = new CultureInfo("pt-BR");
       Console.WriteLine($"Total de Vendas: {countTotalSales}");
       Console.WriteLine($"Valor Total: {Format.FormatToBRL(totalValue)}");
 

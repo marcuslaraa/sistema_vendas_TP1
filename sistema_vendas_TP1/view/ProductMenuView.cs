@@ -11,7 +11,7 @@ namespace sistema_vendas_TP1.view
   public class ProductMenuView
   {
 
-    private static readonly ProductController productController = new ProductController(ProductRepository.Instance);
+    private static readonly controller.ProductController productController = new controller.ProductController(Repository.ProductRepository.Instance);
     public static void show()
     {
       bool running = true;
@@ -75,7 +75,7 @@ namespace sistema_vendas_TP1.view
       Console.Clear();
       Console.WriteLine("Buscar Produto por Código");
       Console.Write("Insira o código: ");
-      string code = Console.ReadLine();
+      string code = Console.ReadLine().ToUpper();
       Product product = productController.GetByCode(code);
       if (product != null)
       {
@@ -116,7 +116,7 @@ namespace sistema_vendas_TP1.view
       Console.Clear();
       Console.WriteLine("Deletar Produto por Código");
       Console.Write("Insira o código: ");
-      string code = Console.ReadLine();
+      string code = Console.ReadLine().ToUpper();
       bool success = productController.DeleteByCode(code);
       if (success)
       {
