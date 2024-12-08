@@ -42,7 +42,7 @@ namespace sistema_vendas_TP1.model
       {
         if (productCode.ProductCode != "0")
         {
-          sb.AppendLine($"{string.Join(", ", productCode.ToString())}");
+          sb.AppendLine(productCode.ToString());
         }
         index++;
       }
