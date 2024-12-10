@@ -131,6 +131,7 @@ namespace sistema_vendas_TP1.view
 
     private static void ListSales()
     {
+      Console.WriteLine();
       Console.WriteLine("Listar Vendas");
 
       List<Sale> sales = saleController.GetAll();
