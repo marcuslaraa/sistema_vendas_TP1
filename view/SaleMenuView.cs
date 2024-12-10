@@ -17,7 +17,7 @@ namespace sistema_vendas_TP1.view
       bool running = true;
       while (running)
       {
-        Console.Clear();
+        //Console.Clear();
         Console.WriteLine("Menu de Vendas");
         Console.WriteLine();
         Console.WriteLine("1. Cadastrar Venda");
