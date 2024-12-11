@@ -50,6 +50,7 @@ Este é um sistema de vendas desenvolvido como parte do Trabalho Avaliativo da d
 - **Utils**: Contém classes utilitárias.
 
   - `Format.cs`
+  - `GenerateCodeClass.cs`
 
 - **View**: Contém as classes de visualização que interagem com o usuário.
 
